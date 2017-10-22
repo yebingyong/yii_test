@@ -72,7 +72,24 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+      
         return $this->render('index');
+    }
+    public function actionTest(){
+          //创建画布
+//        imagecreatetruecolor($width, $height);
+        $image = imagecreatetruecolor(500, 500);
+        //2、创建颜色
+        $color = imagecolorallocate($image, 255, 0, 0);
+        //3、开始绘画
+        //水平绘制一个字符
+        imagechar($image,5, 50, 100, '3', $color);
+        //告诉浏览器以图片的形式显示
+        header('content-type:image/jpeg');
+        //输出图像
+        imagejpeg($image);
+        //6、销毁资源
+        imagedestroy($image);
     }
 
     /**
